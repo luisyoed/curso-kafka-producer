@@ -27,13 +27,13 @@ public class ServicePublisherImpl implements ServicePublisher {
 		
 					@Override
 					public void onSuccess(SendResult<String, String> result) {
-						log.info("Send Message: {} ", msg);
+						log.info("Send Message: {}  -  with offset: {} ", msg,  result.getRecordMetadata().offset());
 		
 					}
 		
 					@Override
 					public void onFailure(Throwable ex) {
-						log.error("Unable to send message {}", msg);
+						log.error("Unable to send message {} -  deu to:  {}", msg, ex.getMessage());
 					}
 		});
 	}
